@@ -1,0 +1,334 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Experiment-19\par
+import javax.microedition.midlet.*;\par
+import javax.microedition.lcdui.*;\par
+import javax.microedition.rms.*;\par
+import java.io.*;\par
+public class QuizMidlet extends MIDlet implements CommandListener \{\par
+public Form form1;\par
+public Form form2;\par
+public Form form3;\par
+public Form form4;\par
+public Form form5;\par
+public Form form6;\par
+public Form form7;\par
+public ChoiceGroup ch1;\par
+public ChoiceGroup ch2;\par
+public ChoiceGroup ch3;;\par
+public ChoiceGroup ch4;;\par
+public ChoiceGroup ch5;;\par
+public Command nextCommand;\par
+public Command backCommand;\par
+public Command MenuCommand;\par
+public Command OkCommand;\par
+public Command ExitCommand;\par
+public Command sCommand;\par
+public Display display;\par
+public StringItem st;\par
+public TextField textfield;\par
+public int count;\par
+public RecordStore recordstore=null;\par
+public RecordEnumeration re=null;\par
+public Alert alert;\par
+public Compare comp;\par
+public StringItem st1;\par
+public QuizMidlet()\par
+\{\par
+count=0;\par
+Date Structures using C ++ B 2018-2019\par
+Date Structures using C ++ LAB 201\par
+Department of IT Page 23\par
+MOBILE APPLICATION DEVELOPMENT LAB 2019-2020\par
+display=Display.getDisplay(this);\par
+nextCommand=new Command("Next",Command.OK,1);\par
+backCommand=new Command("Back",Command.BACK,1);\par
+OkCommand=new Command("Save",Command.SCREEN,1);\par
+ExitCommand=new Command("Exit",Command.SCREEN,1);\par
+sCommand=new Command("TopScores",Command.SCREEN,1);\par
+st=new StringItem("TotalPoints","0");\par
+st1=new StringItem("","");\par
+textfield=new TextField("EnterName","",20,TextField.ANY);\par
+form1=new Form("J2ME Stands for");\par
+form2=new Form("a+b=");\par
+form3=new Form("5*5");\par
+form4=new Form("Who is AP CM");\par
+form5=new Form("How many Districts in AP");\par
+form6=new Form("Score");\par
+form7=new Form("Top Scoreers");\par
+ch1=new ChoiceGroup("",Choice.EXCLUSIVE);\par
+ch1.append("Java 2 Mobile Edition", null);\par
+ch1.append("Java 2 Macro Edition", null);\par
+ch1.append("Java 2 Micro Edition", null);\par
+ch1.append("Java 2 Music Edition", null);\par
+form1.append(ch1);\par
+form1.addCommand(nextCommand);\par
+form1.setCommandListener(this);\par
+ch2=new ChoiceGroup("",Choice.EXCLUSIVE);\par
+ch2.append("b+a", null);\par
+ch2.append("b*a", null);\par
+ch2.append("b/a", null);\par
+ch2.append("b-a", null);\par
+form2.append(ch2);\par
+form2.addCommand(nextCommand);\par
+form2.addCommand(backCommand);\par
+form2.setCommandListener(this);\par
+ch3=new ChoiceGroup("",Choice.EXCLUSIVE);\par
+ch3.append("20", null);\par
+ch3.append("30", null);\par
+ch3.append("10", null);\par
+ch3.append("25", null);\par
+form3.append(ch3);\par
+form3.addCommand(nextCommand);\par
+form3.addCommand(backCommand);\par
+form3.setCommandListener(this);\par
+ch4=new ChoiceGroup("",Choice.EXCLUSIVE);\par
+ch4.append("Rosiah", null);\par
+ch4.append("Jagan", null);\par
+ch4.append("ChandaBabu", null);\par
+ch4.append("Kiran", null);\par
+form4.append(ch4);\par
+form4.addCommand(nextCommand);\par
+form4.addCommand(backCommand);\par
+form4.setCommandListener(this);\par
+ch5=new ChoiceGroup("",Choice.EXCLUSIVE);\par
+ch5.append("8", null);\par
+ch5.append("4", null);\par
+Date Structures using C ++ B 2018-2019\par
+Date Structures using C ++ LAB 201\par
+Department of IT Page 24\par
+MOBILE APPLICATION DEVELOPMENT LAB 2019-2020\par
+ch5.append("11", null);\par
+ch5.append("23", null);\par
+form5.append(ch5);\par
+form5.addCommand(backCommand);\par
+form5.addCommand(nextCommand);\par
+form5.setCommandListener(this);\par
+form6.addCommand(OkCommand);\par
+form6.addCommand(ExitCommand);\par
+form6.addCommand(sCommand);\par
+form6.setCommandListener(this);\par
+form7.addCommand(backCommand);\par
+form7.setCommandListener(this);\par
+try\par
+\{\par
+recordstore=RecordStore.openRecordStore("Quiz", true);\par
+\}\par
+catch(Exception ex)\par
+\{\par
+\}\par
+\}\par
+public void startApp() \{\par
+display.setCurrent(form1);\par
+\}\par
+public void pauseApp() \{\par
+\}\par
+public void destroyApp(boolean unconditional) \{\par
+\}\par
+public void commandAction(Command cmd,Displayable displayable)\par
+\{\par
+if(displayable==form1)\par
+\{\par
+if(cmd==nextCommand)\par
+display.setCurrent(form2);\par
+\}\par
+else if(displayable==form2)\par
+\{\par
+if(cmd==nextCommand)\par
+display.setCurrent(form3);\par
+else if(cmd==backCommand)\par
+display.setCurrent(form1);\par
+\}\par
+else if(displayable==form3)\par
+\{\par
+if(cmd==nextCommand)\par
+display.setCurrent(form4);\par
+else if(cmd==backCommand)\par
+display.setCurrent(form2);\par
+\}\par
+else if(displayable==form4)\par
+\{\par
+if(cmd==nextCommand)\par
+Date Structures using C ++ B 2018-2019\par
+Date Structures using C ++ LAB 201\par
+Department of IT Page 25\par
+MOBILE APPLICATION DEVELOPMENT LAB 2019-2020\par
+display.setCurrent(form5);\par
+else if(cmd==backCommand)\par
+display.setCurrent(form3);\par
+\}\par
+else if(displayable==form5)\par
+\{\par
+if(cmd==nextCommand)\par
+if(cmd==nextCommand)\par
+\{\par
+if(ch1.getSelectedIndex()==2)\par
+count++;\par
+if(ch2.getSelectedIndex()==0)\par
+count++;\par
+if(ch3.getSelectedIndex()==3)\par
+count++;\par
+if(ch4.getSelectedIndex()==3)\par
+count++;\par
+if(ch5.getSelectedIndex()==3)\par
+count++;\par
+st.setText(String.valueOf(count));\par
+form6.append(st);\par
+form6.append(textfield);\par
+display.setCurrent(form6);\par
+\}\par
+else if(cmd==backCommand)\par
+display.setCurrent(form4);\par
+\}\par
+else if(displayable==form6)\par
+\{\par
+if(cmd==OkCommand)\par
+\{\par
+try\par
+\{\par
+String Pname=textfield.getString();\par
+int Points=Integer.parseInt(st.getText());\par
+byte[] bytes;\par
+ByteArrayOutputStream ostream=new ByteArrayOutputStream();\par
+DataOutputStream dstream =new DataOutputStream(ostream);\par
+dstream.writeUTF(Pname);\par
+dstream.writeInt(Points);\par
+dstream.flush();\par
+bytes=ostream.toByteArray();\par
+recordstore.addRecord(bytes, 0,bytes.length );\par
+ostream.reset();\par
+ostream.close();\par
+dstream.close();\par
+alert =new Alert("Message","Saved",null,AlertType.INFO);\par
+alert.setTimeout(Alert.FOREVER);\par
+display.setCurrent(alert);\par
+\}\par
+catch(Exception ex)\par
+\{\par
+Date Structures using C ++ B 2018-2019\par
+Date Structures using C ++ LAB 201\par
+Department of IT Page 26\par
+MOBILE APPLICATION DEVELOPMENT LAB 2019-2020\par
+alert =new Alert("Message",ex.toString(),null,AlertType.INFO);\par
+alert.setTimeout(Alert.FOREVER);\par
+display.setCurrent(alert);\par
+\}\par
+\}\par
+else if(cmd==ExitCommand)\par
+\{\par
+try\par
+\{\par
+recordstore.closeRecordStore();\par
+notifyDestroyed();\par
+\}\par
+catch(Exception ex)\par
+\{\par
+\}\par
+\}\par
+else if(cmd==sCommand)\par
+\{\par
+try\par
+\{\par
+byte[] bytes=new byte[300];\par
+ByteArrayInputStream bstream=new ByteArrayInputStream(bytes);\par
+DataInputStream dstream=new DataInputStream(bstream);\par
+StringBuffer sb=new StringBuffer();\par
+comp=new Compare();\par
+re=recordstore.enumerateRecords(null, comp,false);\par
+st1.setText("");\par
+while(re.hasNextElement())\par
+\{\par
+recordstore.getRecord(re.nextRecordId(), bytes, 0);\par
+sb.append(dstream.readUTF()+"|"+dstream.readInt());\par
+sb.append("\\n");\par
+dstream.reset();\par
+\}\par
+bstream.close();\par
+dstream.close();\par
+st1.setText(sb.toString());\par
+form7.append(st1);\par
+\}\par
+catch(Exception ex)\par
+\{\par
+alert =new Alert("Msg",ex.toString(),null,AlertType.INFO);\par
+alert.setTimeout(Alert.FOREVER);\par
+display.setCurrent(alert);\par
+\}\par
+display.setCurrent(form7);\par
+\}\par
+\}\par
+else if(displayable==form7)\par
+\{\par
+if(cmd==backCommand)\par
+display.setCurrent(form6);\par
+\} \}\}\par
+Date Structures using C ++ B 2018-2019\par
+Date Structures using C ++ LAB 201\par
+Department of IT Page 27\par
+MOBILE APPLICATION DEVELOPMENT LAB 2019-2020\par
+class Compare implements RecordComparator\par
+\{\par
+public byte[] bytedata=new byte[300];\par
+public ByteArrayInputStream bstream=null;\par
+public DataInputStream dstream=null;\par
+public int compare(byte[] r1,byte[] r2)\par
+\{\par
+int r1int,r2int;\par
+int or=0;\par
+try\par
+\{\par
+int maxlen=Math.max(r1.length, r2.length);\par
+if(maxlen>bytedata.length)\par
+\{\par
+bytedata=new byte[maxlen];\par
+\}\par
+bstream=new ByteArrayInputStream(r1);\par
+dstream=new DataInputStream(bstream);\par
+dstream.readUTF();\par
+r1int=dstream.readInt();\par
+bstream=new ByteArrayInputStream(r2);\par
+dstream=new DataInputStream(bstream);\par
+dstream.readUTF();\par
+r2int=dstream.readInt();\par
+if(r1int==r2int)\par
+\{\par
+or= RecordComparator.EQUIVALENT;\par
+\}\par
+else if(r1int>r2int)\par
+\{\par
+or= RecordComparator.PRECEDES;\par
+\}\par
+else if(r1int<r2int)\par
+\{\par
+or= RecordComparator.FOLLOWS;\par
+\}\par
+return or;\par
+\}\par
+catch(Exception ex)\par
+\{\par
+return RecordComparator.EQUIVALENT;\par
+\}\par
+\}\par
+public void compareClose()\par
+\{\par
+try\par
+\{\par
+if(bstream!=null)\par
+\{\par
+bstream.close();\par
+\}\par
+if(dstream!=null)\par
+\{\par
+dstream.close();\par
+\}\par
+Date Structures using C ++ B 2018-2019\par
+Date Structures using C ++ LAB 201\par
+Department of IT Page 28\par
+MOBILE APPLICATION DEVELOPMENT LAB 2019-2020\par
+\}\par
+catch(Exception ex)\par
+\{\par
+\} \}\par
+\}\par
+}
+ 
